@@ -30,7 +30,7 @@ Una landing de marca para una cafetería ficticia, construida con **HTML + Tailw
 
 ├─ index.html        # Maquetación y secciones principales
 ├─ scripts.js        # Interacciones: header, menú móvil, scroll, validación
-└─ /img              # Imágenes de héroe, galería y ambientación (no versionadas aquí)
+└─ /img              # Imágenes 
 ```
 
 ---
@@ -112,4 +112,36 @@ Una landing de marca para una cafetería ficticia, construida con **HTML + Tailw
 ## 👤 Autoría
 
 Contacto: *[ruizcardenas03@gmail.com](mailto:ruizcardenas03@gmail.com)*
+
 Ubicación referencial: *Lima, Perú*
+
+
+## Capturas de la pagina web
+
+<img width="1335" height="577" alt="image" src="https://github.com/user-attachments/assets/0969e56d-97bd-474c-835d-e557a29cfe0d" />
+
+<img width="1338" height="638" alt="image" src="https://github.com/user-attachments/assets/8c9c674c-0fc3-41f1-b3ee-38e4c554ee5d" />
+
+<img width="1337" height="652" alt="image" src="https://github.com/user-attachments/assets/baa4b76b-c407-4d8b-a21a-e36c8df9a28f" />
+
+<img width="1340" height="649" alt="image" src="https://github.com/user-attachments/assets/b0df34d3-de70-48df-85fc-787348e14586" />
+
+<img width="1340" height="300" alt="image" src="https://github.com/user-attachments/assets/9537ebde-d106-44f3-91c8-e2f180d3013f" />
+
+## Capturas de la pagina web (Movil)
+
+<img width="286" height="449" alt="image" src="https://github.com/user-attachments/assets/9cec07e1-c8e8-42fd-ad1e-b7dc68d41e20" />
+
+<img width="283" height="497" alt="image" src="https://github.com/user-attachments/assets/344956f0-cbcb-4fc1-9f77-8a22dc3f71dd" />
+
+<img width="286" height="498" alt="image" src="https://github.com/user-attachments/assets/49098088-a0d7-468a-866f-ea08691db43b" />
+
+<img width="283" height="500" alt="image" src="https://github.com/user-attachments/assets/54c925ee-20ef-45ab-b1b9-b5acfe7ffcfb" />
+
+<img width="282" height="500" alt="image" src="https://github.com/user-attachments/assets/618463e5-08a3-4230-8ae4-6d4554004748" />
+
+<img width="282" height="503" alt="image" src="https://github.com/user-attachments/assets/d4286bb2-e9af-44c6-aeca-492f1c1bf5b1" />
+
+
+
+
