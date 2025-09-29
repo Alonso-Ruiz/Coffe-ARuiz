@@ -67,6 +67,7 @@ const overlay = document.getElementById('menuOverlay');
 const closeBtn = document.getElementById('mobileMenuClose');
 const mobileLinks = document.querySelectorAll('#mobileMenu .mobile-nav-link');
 
+// Estilos al hacer scroll
 function applyScrolledStyles(scrolled) {
     if (scrolled) {
         header.classList.add('shadow-md');
@@ -80,7 +81,7 @@ function applyScrolledStyles(scrolled) {
 window.addEventListener('scroll', () => applyScrolledStyles(window.scrollY > 50));
 applyScrolledStyles(window.scrollY > 50);
 
-// ====== Mobile menu: abrir/cerrar con X, overlay, links y ESC ======
+// Menú móvil: abrir/cerrar
 function openMenu() {
     mobileMenu.classList.remove('-translate-y-full', 'opacity-0');
     mobileMenu.classList.add('translate-y-0', 'opacity-100');
@@ -100,26 +101,33 @@ function closeMenu() {
 mobileBtn.addEventListener('click', openMenu);
 closeBtn.addEventListener('click', closeMenu);
 overlay.addEventListener('click', closeMenu);
-mobileLinks.forEach(a => a.addEventListener('click', closeMenu));
+mobileLinks.forEach(a => {
+    a.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        const targetId = a.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+        closeMenu(); 
+    });
+});
 window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-// Si cambia a viewport >= lg, se asegura el menú cerrado
 window.addEventListener('resize', () => { if (window.innerWidth >= 1024) closeMenu(); });
 
-// ====== Cerrar menú con "swipe down" (gesto hacia abajo) ======
+// Cerrar menú con "swipe down"
 let startX = 0, startY = 0, endX = 0, endY = 0;
-
-// Umbrales: distancia mínima y predominio vertical sobre horizontal
-const SWIPE_MIN = 70;        // píxeles mínimos de arrastre
-const VERTICAL_DOM = 1.2;    // el movimiento vertical debe ser 1.2x el horizontal
-const TOP_ZONE = 100;        // solo habilitar si el gesto inicia cerca del borde superior
+const SWIPE_MIN = 70;
+const VERTICAL_DOM = 1.2;
+const TOP_ZONE = 100;
 
 function isSwipeDown() {
     const dx = Math.abs(endX - startX);
-    const dy = endY - startY; // positivo si va hacia abajo
+    const dy = endY - startY;
     return (
-        startY <= TOP_ZONE &&          // inicia arriba
-        dy > SWIPE_MIN &&              // desplazamiento suficiente
-        dy / Math.max(dx, 1) > VERTICAL_DOM // predominio vertical
+        startY <= TOP_ZONE &&          
+        dy > SWIPE_MIN &&             
+        dy / Math.max(dx, 1) > VERTICAL_DOM 
     );
 }
 
@@ -135,11 +143,62 @@ mobileMenu.addEventListener('touchmove', (e) => {
     const t = e.touches[0];
     endX = t.clientX;
     endY = t.clientY;
-    // No prevenimos el scroll; solo medimos el gesto.
 }, { passive: true });
 
 mobileMenu.addEventListener('touchend', () => {
     if (isSwipeDown()) {
         closeMenu();
+    }
+});
+
+// Validación del formulario de contacto
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = contactForm.querySelector('[name="name"]');
+    const email = contactForm.querySelector('[name="email"]');
+    const message = contactForm.querySelector('[name="message"]');
+    const phone = contactForm.querySelector('[name="phone"]');
+    const policy = contactForm.querySelector('[name="policy"]');
+
+    let isValid = true;
+
+    // Validar nombre (mínimo 2 caracteres)
+    if (name.value.trim().length < 2) {
+        isValid = false;
+        alert('El nombre debe tener al menos 2 caracteres.');
+    }
+
+    // Validar email (formato válido)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value.trim())) {
+        isValid = false;
+        alert('Por favor, ingresa un correo electrónico válido.');
+    }
+
+    // Validar mensaje (mínimo 20 caracteres)
+    if (message.value.trim().length < 20) {
+        isValid = false;
+        alert('El mensaje debe tener al menos 20 caracteres.');
+    }
+
+    // Validar teléfono (opcional, 7–15 dígitos)
+    const phoneRegex = /^\d{7,15}$/;
+    if (phone.value.trim() && !phoneRegex.test(phone.value.trim())) {
+        isValid = false;
+        alert('El teléfono debe tener entre 7 y 15 dígitos.');
+    }
+
+    // Validar checkbox de política
+    if (!policy.checked) {
+        isValid = false;
+        alert('Debes aceptar la política de privacidad.');
+    }
+
+    if (isValid) {
+        alert('Formulario enviado con éxito.');
+        contactForm.submit();
     }
 });
