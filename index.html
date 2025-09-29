@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Aroma - El mejor café de la ciudad</title>
+    <meta name="description" content="Disfruta del mejor café artesanal en Café Aroma. Ambiente acogedor, granos selectos y postres deliciosos.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="scripts.js" defer></script>
+    <style>
+        .hero-bg {
+            background-image:
+                linear-gradient(135deg, rgba(45, 27, 20, 0.85) 0%, rgba(74, 46, 32, 0.85) 25%, rgba(45, 27, 20, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2061&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-coffee-950 text-cream-50 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-coffee-900 shadow-md" id="header">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3 animate-fade-in-left">
+                    <span class="text-2xl font-display font-bold text-cream-100">Café Aroma</span>
+                </div>
+
+                <ul class="hidden lg:flex items-center space-x-8 font-medium">
+                    <li><a href="#inicio"
+                            class="nav-link hover:text-cream-300 transition-colors duration-300 relative group"
+                            data-tw-scroll="smooth">
+                            Inicio
+                            <span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cream-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                    <li><a href="#nosotros"
+                            class="nav-link hover:text-cream-300 transition-colors duration-300 relative group"
+                            data-tw-scroll="smooth">
+                            Nosotros
+                            <span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cream-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                    <li><a href="#servicios"
+                            class="nav-link hover:text-cream-300 transition-colors duration-300 relative group"
+                            data-tw-scroll="smooth">
+                            Servicios
+                            <span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cream-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                    <li><a href="#galeria"
+                            class="nav-link hover:text-cream-300 transition-colors duration-300 relative group"
+                            data-tw-scroll="smooth">
+                            Galería
+                            <span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cream-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a></li>
+                    <li><a href="#contacto"
+                            class="bg-cream-400 hover:bg-cream-500 text-coffee-950 px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                            data-tw-scroll="smooth">
+                            Contacto
+                        </a></li>
+                </ul>
+
+                <button id="mobileMenuBtn"
+                    class="lg:hidden text-cream-100 hover:text-cream-300 transition-colors duration-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="menuOverlay"
+                    class="fixed inset-0 bg-black/50 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity lg:hidden">
+                </div>
+                <nav id="mobileMenu" class="fixed top-4 right-4 w-[86vw] max-w-sm max-h-[86vh] overflow-y-auto bg-coffee-900 text-cream-50 rounded-2xl shadow-2xl transform -translate-y-full opacity-0 transition-transform duration-300 ease-in-out lg:hidden">
+                    <div class="flex items-center justify-between px-4 py-3 border-b border-coffee-800">
+                        <span class="font-display font-bold text-lg">Café Aroma</span>
+                        <button id="mobileMenuClose" class="p-2 rounded-md hover:bg-coffee-800">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <ul class="flex flex-col p-4 space-y-3">
+                        <li><a href="#inicio"
+                                class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-coffee-800">Inicio</a></li>
+                        <li><a href="#nosotros"
+                                class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-coffee-800">Nosotros</a></li>
+                        <li><a href="#servicios"
+                                class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-coffee-800">Servicios</a>
+                        </li>
+                        <li><a href="#galeria"
+                                class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-coffee-800">Galería</a></li>
+                    </ul>
+                    <div class="px-4 pb-4 pt-2">
+                        <a href="#contacto" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cream-400 text-coffee-900 hover:bg-cream-300 text-sm font-semibold shadow">
+                            Contacto
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seccion Principal-->
+        <section id="inicio" class="relative min-h-[88vh] pt-24 pb-10 flex items-center justify-center hero-bg">
+
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1
+                        class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-6 animate-fade-in-up">
+                        <span class="text-cream-100">Café</span>
+                        <span class="text-cream-400 block lg:inline"> Aroma</span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl lg:text-3xl text-cream-200 mb-8 font-light leading-relaxed animate-fade-in-up"
+                        style="animation-delay: 0.2s;">
+                        Descubre el sabor auténtico del mejor café artesanal en un ambiente acogedor y único
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 animate-fade-in-up"
+                        style="animation-delay: 0.4s;">
+                        <a href="#contacto"
+                            class="group bg-cream-400 hover:bg-cream-500 text-coffee-950 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl inline-flex items-center space-x-3"
+                            data-tw-scroll="smooth">
+                            <span>Reserva tu mesa</span>
+                            <i
+                                class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#nosotros"
+                            class="group bg-white/10 backdrop-blur-md border border-white/20 text-cream-100 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl inline-flex items-center space-x-3"
+                            data-tw-scroll="smooth">
+                            <i class="fas fa-play group-hover:scale-110 transition-transform duration-300"></i>
+                            <span>Ver historia</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion Historia -->
+        <section id="nosotros" class="pt-16 pb-20 bg-coffee-900 relative overflow-hidden">
+            <div class="absolute inset-0 bg-coffee-texture opacity-5"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-0.5 bg-cream-400"></div>
+                            <span
+                                class="text-cream-400 font-semibold tracking-wider uppercase text-xs sm:text-sm">Nuestra
+                                Historia</span>
+                        </div>
+
+                        <h2
+                            class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-cream-100 leading-tight">
+                            Pasión por el <span class="text-cream-400">café perfecto</span>
+                        </h2>
+
+                        <div class="space-y-4 text-cream-200 text-lg leading-relaxed">
+                            <p>
+                                En Café Aroma, cada taza cuenta una historia. Desde 2010, hemos sido el refugio perfecto
+                                para los amantes del café, ofreciendo granos cuidadosamente seleccionados de las mejores
+                                fincas del mundo.
+                            </p>
+
+                            <p>
+                                Nuestro compromiso va más allá del café: creamos experiencias memorables en un ambiente
+                                que invita a relajarse, trabajar o compartir momentos especiales con amigos y familia.
+                            </p>
+
+                            <p>
+                                Ven y descubre por qué somos el lugar favorito de la ciudad para disfrutar de un café
+                                excepcional.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-6">
+                            <div class="bg-cream-100 p-5 sm:p-6 rounded-xl shadow text-center">
+                                <div class="text-2xl sm:text-3xl font-bold text-coffee-900">14+</div>
+                                <div class="text-coffee-700 text-sm">Años de experiencia</div>
+                            </div>
+                            <div class="bg-cream-100 p-5 sm:p-6 rounded-xl shadow text-center">
+                                <div class="text-2xl sm:text-3xl font-bold text-coffee-900">50k+</div>
+                                <div class="text-coffee-700 text-sm">Clientes satisfechos</div>
+                            </div>
+                            <div class="bg-cream-100 p-5 sm:p-6 rounded-xl shadow text-center">
+                                <div class="text-2xl sm:text-3xl font-bold text-coffee-900">25+</div>
+                                <div class="text-coffee-700 text-sm">Variedades de café</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-fade-in-right">
+                        <div class="relative">
+                            <div class="image-placeholder rounded-2xl h-96 lg:h-[500px]">
+                                <img src="img/puesto.jpg" alt="Imagen Principal"
+                                    class="w-full h-full object-cover rounded-2xl transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion Servicios -->
+        <section id="servicios" class="py-20 bg-cream-100">
+            <div class="container mx-auto px-6">
+
+                <div class="text-center mb-16">
+                    <div class="flex items-center justify-center space-x-4 mb-6">
+                        <div class="w-12 h-0.5 bg-coffee-700"></div>
+                        <span class="text-coffee-700 font-semibold tracking-wider uppercase text-sm">Servicios</span>
+                        <div class="w-12 h-0.5 bg-coffee-700"></div>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-coffee-950 mb-6">
+                        Lo que te ofrecemos
+                    </h2>
+                    <p class="text-coffee-800 text-lg max-w-2xl mx-auto">
+                        Descubre nuestra amplia gama de servicios diseñados para hacer de tu visita una experiencia
+                        inolvidable
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="group bg-white p-8 rounded-2xl border border-coffee-200 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in">
+                        <div
+                            class="w-16 h-16 bg-coffee-700/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-coffee-700/20 transition-colors duration-300">
+                            <i class="fas fa-coffee text-2xl text-coffee-700"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-coffee-950 mb-4">Café Artesanal</h3>
+                        <p class="text-coffee-700 leading-relaxed">
+                            Granos seleccionados y tostados diariamente para garantizar el mejor sabor y aroma en cada
+                            taza que servimos.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group bg-white p-8 rounded-2xl border border-coffee-200 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in">
+                        <div
+                            class="w-16 h-16 bg-coffee-700/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-coffee-700/20 transition-colors duration-300">
+                            <i class="fas fa-birthday-cake text-2xl text-coffee-700"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-coffee-950 mb-4">Repostería Fresca</h3>
+                        <p class="text-coffee-700 leading-relaxed">
+                            Pasteles, croissants y dulces horneados cada mañana con ingredientes naturales y recetas
+                            tradicionales.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group bg-white p-8 rounded-2xl border border-coffee-200 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in">
+                        <div
+                            class="w-16 h-16 bg-coffee-700/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-coffee-700/20 transition-colors duration-300">
+                            <i class="fas fa-laptop text-2xl text-coffee-700"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-coffee-950 mb-4">Espacio de Trabajo</h3>
+                        <p class="text-coffee-700 leading-relaxed">
+                            Ambiente tranquilo con WiFi gratuito, ideal para estudiar, trabajar o disfrutar de una
+                            lectura relajante.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group bg-white p-8 rounded-2xl border border-coffee-200 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in">
+                        <div
+                            class="w-16 h-16 bg-coffee-700/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-coffee-700/20 transition-colors duration-300">
+                            <i class="fas fa-users text-2xl text-coffee-700"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-coffee-950 mb-4">Eventos Privados</h3>
+                        <p class="text-coffee-700 leading-relaxed">
+                            Organizamos reuniones, celebraciones y eventos corporativos en un ambiente único y acogedor.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group bg-white p-8 rounded-2xl border border-coffee-200 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in">
+                        <div
+                            class="w-16 h-16 bg-coffee-700/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-coffee-700/20 transition-colors duration-300">
+                            <i class="fas fa-truck text-2xl text-coffee-700"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-coffee-950 mb-4">Delivery & Takeaway</h3>
+                        <p class="text-coffee-700 leading-relaxed">
+                            Disfruta de nuestro café y repostería desde la comodidad de tu hogar con nuestro servicio de
+                            entrega.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group bg-white p-8 rounded-2xl border border-coffee-200 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-fade-in">
+                        <div
+                            class="w-16 h-16 bg-coffee-700/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-coffee-700/20 transition-colors duration-300">
+                            <i class="fas fa-graduation-cap text-2xl text-coffee-700"></i>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-coffee-950 mb-4">Catas de Café</h3>
+                        <p class="text-coffee-700 leading-relaxed">
+                            Aprende sobre los diferentes orígenes y métodos de preparación en nuestras catas guiadas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion Galeria -->
+        <section id="galeria" class="py-20 bg-cream-50">
+            <div class="container mx-auto px-6">
+
+                <div class="text-center mb-16">
+                    <div class="flex items-center justify-center space-x-4 mb-6">
+                        <div class="w-12 h-0.5 bg-coffee-700"></div>
+                        <span class="text-coffee-700 font-semibold tracking-wider uppercase text-sm">Galería</span>
+                        <div class="w-12 h-0.5 bg-coffee-700"></div>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-coffee-950 mb-6">
+                        Nuestro ambiente
+                    </h2>
+                    <p class="text-coffee-800 text-lg max-w-2xl mx-auto">
+                        Descubre el ambiente acogedor y la experiencia única que te espera en Café Aroma
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Imagen Principal del Local -->
+                    <div class="lg:col-span-2 lg:row-span-2 animate-fade-in">
+                        <div
+                            class="image-placeholder rounded-2xl h-80 lg:h-full transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                            <img src="img/interior.jpg" alt="Imagen Principal del Local"
+                                class="w-full h-full object-cover rounded-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Repostería -->
+                    <div
+                        class="image-placeholder rounded-2xl h-40 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                        <img src="img/comida.jpg" alt="Repostería" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+
+                    <!-- Ambiente Social -->
+                    <div
+                        class="image-placeholder rounded-2xl h-40 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                        <img src="img/baristas.jpg" alt="Ambiente Social"
+                            class="w-full h-full object-cover rounded-2xl">
+                    </div>
+
+                    <div
+                        class="image-placeholder rounded-2xl h-40 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                        <img src="img/corasant.jpg" alt="Ambiente Social"
+                            class="w-full h-full object-cover rounded-2xl">
+                    </div>
+
+                    <!-- Granos de Café -->
+                    <div
+                        class="image-placeholder rounded-2xl h-40 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                        <img src="img/granos.jpg" alt="Granos de Café" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+
+                    <!-- Experiencia -->
+                    <div
+                        class="image-placeholder rounded-2xl h-40 transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+                        <img src="img/tazas.jpg" alt="Experiencia" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion Contacto -->
+        <section id="contacto" class="py-20 bg-coffee-800 relative overflow-hidden">
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="flex items-center justify-center space-x-4 mb-6">
+                        <div class="w-12 h-0.5 bg-cream-400"></div>
+                        <span class="text-cream-400 font-semibold tracking-wider uppercase text-sm">Contacto</span>
+                        <div class="w-12 h-0.5 bg-cream-400"></div>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-cream-100 mb-6">
+                        Hablemos de café
+                    </h2>
+                    <p class="text-cream-200 text-lg max-w-2xl mx-auto">
+                        ¿Tienes alguna pregunta o quieres hacer una reserva? Estamos aquí para ayudarte
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <div class="space-y-8">
+                        <div class="space-y-6">
+                            <div
+                                class="flex items-start space-x-4 p-6 bg-coffee-900/50 rounded-2xl hover-lift border border-coffee-700 transition-transform duration-500 ease-in-out hover:scale-105">
+                                <div
+                                    class="w-12 h-12 bg-cream-400/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-cream-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-display font-bold text-cream-100 mb-2">Ubicación</h3>
+                                    <p class="text-cream-200">Av. Principal 123, San Isidro<br>Lima, Perú</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start space-x-4 p-6 bg-coffee-900/50 rounded-2xl hover-lift border border-coffee-700 transition-transform duration-500 ease-in-out hover:scale-105">
+                                <div
+                                    class="w-12 h-12 bg-cream-400/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone text-cream-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-display font-bold text-cream-100 mb-2">Teléfono</h3>
+                                    <p class="text-cream-200">(01) 234-5678<br>+51 987 654 321</p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start space-x-4 p-6 bg-coffee-900/50 rounded-2xl hover-lift border border-coffee-700 transition-transform duration-500 ease-in-out hover:scale-105">
+                                <div
+                                    class="w-12 h-12 bg-cream-400/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-cream-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-display font-bold text-cream-100 mb-2">Horarios</h3>
+                                    <p class="text-cream-200">
+                                        Lun - Vie: 7:00 AM - 10:00 PM<br>
+                                        Sáb - Dom: 8:00 AM - 11:00 PM
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6">
+                            <h3 class="font-display font-bold text-cream-100 mb-4">Síguenos</h3>
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="w-12 h-12 bg-cream-400/10 hover:bg-cream-400/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                                    <i class="fab fa-facebook-f text-cream-400"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-12 h-12 bg-cream-400/10 hover:bg-cream-400/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                                    <i class="fab fa-instagram text-cream-400"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-12 h-12 bg-cream-400/10 hover:bg-cream-400/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                                    <i class="fab fa-whatsapp text-cream-400"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-12 h-12 bg-cream-400/10 hover:bg-cream-400/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                                    <i class="fab fa-twitter text-cream-400"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de contacto -->
+                    <div class="animate-fade-in-right">
+                        <form id="contactForm" class="bg-cream-100 p-8 rounded-2xl border border-cream-300 space-y-6"
+                            novalidate>
+
+                            <div class="form-group">
+                                <label for="name" class="block text-coffee-900 font-semibold mb-2">
+                                    Nombre completo <span class="text-coffee-800">*</span>
+                                </label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-4 bg-cream-50 text-coffee-900 placeholder:text-coffee-400
+                                    border border-coffee-700 rounded-xl focus:ring-coffee-500/40 focus:border-coffee-800
+                                    focus:outline-none transition-all duration-300 form-focus" placeholder="Tu nombre completo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="block text-coffee-900 font-semibold mb-2">
+                                    Correo electrónico <span class="text-coffee-800">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-4 bg-cream-50 text-coffee-900 placeholder:text-coffee-400
+                                    border border-coffee-700 rounded-xl focus:ring-coffee-500/40 focus:border-coffee-800
+                                    focus:outline-none transition-all duration-300 form-focus" placeholder="tu@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="block text-coffee-900 font-semibold mb-2">
+                                    Teléfono <span class="text-coffee-700">(opcional)</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-4 bg-cream-50 text-coffee-900 placeholder:text-coffee-400
+                                    border border-coffee-700 rounded-xl focus:ring-coffee-500/40 focus:border-coffee-800
+                                    focus:outline-none transition-all duration-300 form-focus" placeholder="987 654 321">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="block text-coffee-900 font-semibold mb-2">
+                                    Mensaje <span class="text-coffee-800">*</span>
+                                </label>
+                                <textarea id="message" name="message" required rows="5" class="w-full px-4 py-4 bg-cream-50 text-coffee-900 placeholder:text-coffee-400
+                                    border border-coffee-700 rounded-xl focus:ring-coffee-500/40 focus:border-coffee-800
+                                    focus:outline-none transition-all duration-300 resize-none form-focus"
+                                    placeholder="Cuéntanos cómo podemos ayudarte o si quieres hacer una reserva..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="flex items-start space-x-3 cursor-pointer group">
+                                    <input type="checkbox" id="policy" name="policy" required class="w-5 h-5 bg-cream-50 border-2 border-coffee-700 rounded
+                                    text-coffee-900 focus:ring-coffee-500 focus:ring-2 transition-all duration-300">
+                                    <span
+                                        class="text-coffee-800 text-sm leading-relaxed group-hover:text-coffee-700 transition-colors duration-300">
+                                        Acepto la <a href="#"
+                                            class="text-coffee-700 hover:text-coffee-500 underline">política de
+                                            privacidad</a> y el tratamiento de mis datos personales <span
+                                            class="text-coffee-800">*</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-coffee-800 text-cream-50 hover:bg-coffee-700 hover:shadow-lg
+                                    shadow-md rounded-xl py-4 font-semibold transition-all duration-300 flex items-center justify-center gap-3 group">
+                                <span>Enviar Mensaje</span>
+                                <i
+                                    class="fas fa-paper-plane group-hover:-translate-y-1 transition-transform duration-300"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-950 py-12 border-t border-coffee-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-coffee text-2xl text-cream-400"></i>
+                        <span class="text-2xl font-display font-bold text-cream-100">Café Aroma</span>
+                    </div>
+                    <p class="text-cream-200 leading-relaxed max-w-md">
+                        El lugar perfecto para disfrutar del mejor café artesanal en un ambiente acogedor.
+                        Ven y descubre por qué somos el favorito de la ciudad.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#"
+                            class="w-10 h-10 bg-cream-400/10 hover:bg-cream-400/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-facebook-f text-cream-400"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-cream-400/10 hover:bg-cream-400/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-instagram text-cream-400"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-cream-400/10 hover:bg-cream-400/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-whatsapp text-cream-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-display font-bold text-cream-100 mb-4">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio"
+                                class="text-cream-200 hover:text-cream-400 transition-colors duration-300">Inicio</a>
+                        </li>
+                        <li><a href="#nosotros"
+                                class="text-cream-200 hover:text-cream-400 transition-colors duration-300">Nosotros</a>
+                        </li>
+                        <li><a href="#servicios"
+                                class="text-cream-200 hover:text-cream-400 transition-colors duration-300">Servicios</a>
+                        </li>
+                        <li><a href="#contacto"
+                                class="text-cream-200 hover:text-cream-400 transition-colors duration-300">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-display font-bold text-cream-100 mb-4">Contacto</h3>
+                    <div class="space-y-3 text-cream-200 text-sm">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-cream-400 w-4"></i>
+                            <span>Av. Principal 123, San Isidro</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-cream-400 w-4"></i>
+                            <span>(01) 234-5678</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-cream-400 w-4"></i>
+                            <span>hola@cafearoma.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-coffee-800 mt-8 pt-8 text-center">
+                <p class="text-cream-300 text-sm">
+                    &copy; 2024 Café Aroma. Todos los derechos reservados. | Diseño con ❤️ para los amantes del café
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
